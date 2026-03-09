@@ -1,6 +1,6 @@
-# 🚀 Antigravity-QA-Core-Selenium: AI-Enhanced Automation Engine
+# 🚀 Nexus-QA-Framework: AI-Enhanced Automation Engine
 
-Antigravity-QA-Core-Selenium is a next-generation, enterprise-grade test automation architecture built with **Java 21**, **Selenium**, and **Cucumber**. It is designed for maximum scalability, execution speed (Parallel Testing), and seamless collaboration with AI agents.
+Nexus-QA-Framework is a next-generation, enterprise-grade test automation architecture built with **Java 21**, **Selenium**, and **Cucumber**. It is designed for maximum scalability, execution speed (Parallel Testing), and seamless collaboration with AI agents.
 
 ---
 

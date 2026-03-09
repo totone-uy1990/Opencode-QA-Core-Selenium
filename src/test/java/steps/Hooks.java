@@ -28,19 +28,32 @@ public class Hooks {
                 Allure.addAttachment(
                         "URL",
                         "text/plain",
-                        driver.getCurrentUrl()
-                );
+                        driver.getCurrentUrl());
+                String pageSource = driver.getPageSource();
                 Allure.addAttachment(
                         "Page source",
                         "text/html",
-                        driver.getPageSource(),
-                        ".html"
-                );
+                        pageSource,
+                        ".html");
+
+                // Guardar DOM en archivo fsico para diagnstico de Inteligencia Artificial
+                // (Scripts)
+                try {
+                    java.io.File debugDir = new java.io.File("build/debug-artifacts");
+                    if (!debugDir.exists()) {
+                        debugDir.mkdirs();
+                    }
+                    String safeScenarioName = scenario.getName().replaceAll("[^a-zA-Z0-9.-]", "_");
+                    java.nio.file.Files.writeString(
+                            java.nio.file.Paths.get("build/debug-artifacts/dom_dump_" + safeScenarioName + ".html"),
+                            pageSource);
+                } catch (java.io.IOException e) {
+                    System.err.println("Failed to save DOM for AI diagnostic: " + e.getMessage());
+                }
             }
         }
 
         BasePage.closeDriver();
     }
-
 
 }

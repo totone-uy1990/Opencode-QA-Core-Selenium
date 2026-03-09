@@ -32,8 +32,24 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run tests
+        id: run_tests
         run: ./gradlew clean test
         continue-on-error: true
+
+      - name: Setup Python for AI Diagnostic
+        if: steps.run_tests.outcome == 'failure'
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Execute Gemini AI Diagnosis
+        if: steps.run_tests.outcome == 'failure'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          pip install -q -U google-generativeai requests
+          python scripts/gemini_diagnose.py
 
       # 1. Descargar el reporte anterior en la carpeta 'old-pages'
       - name: Load test report history
