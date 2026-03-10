@@ -87,8 +87,10 @@ public class CustomAssertions {
                 .filter(WebElement::isDisplayed)
                 .map(WebElement::getText)
                 .map(String::trim)
-                .anyMatch(text -> ((String) text)
-                        .contains(expectedText));
+                .anyMatch(text -> text.contains(expectedText));
+        
+        Assertions.assertTrue(matchFound, 
+            "No se encontró ningún elemento que contenga el texto: [" + expectedText + "]");
     }
 
     // --------------------------
@@ -98,4 +100,3 @@ public class CustomAssertions {
         Assertions.fail(message);
     }
 }
-

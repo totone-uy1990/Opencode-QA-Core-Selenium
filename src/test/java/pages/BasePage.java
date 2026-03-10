@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public abstract class BasePage {
-    //metodo obligatorio para todos los page object
-    protected abstract WebElement getElement(String locator);
+    // metodo obligatorio para todos los page object //para validaciones
+    protected abstract WebElement getElement(By locator);
 
     // Driver por hilo (clave del paralelismo)
     protected static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
@@ -61,12 +61,12 @@ public abstract class BasePage {
     // GETTERS
     // --------------------------
 
-    //obtenemos el driver del threadLocal
+    // obtenemos el driver del threadLocal
     public static WebDriver getDriverFromThread() {
         return driver.get();
     }
 
-    //creamos la espera con el driver
+    // creamos la espera con el driver
     private WebDriverWait getWait() {
         return new WebDriverWait(getDriverFromThread(), Duration.ofSeconds(10));
     }
@@ -81,43 +81,44 @@ public abstract class BasePage {
     // --------------------------
     // locator typeSelector:
     // --------------------------
-    //detecta si es css o xpath
-    private static By getBy(String locator) {
-        locator = locator.trim();
+    // detecta si es css o xpath
 
-        if (locator.startsWith("/") || locator.startsWith("(")) {
-            return By.xpath(locator);
-        } else {
-            return By.cssSelector(locator);
-        }
-    }
+    /*
+     * private static By getBy(String locator) {
+     * locator = locator.trim();
+     * 
+     * if (locator.startsWith("/") || locator.startsWith("(")) {
+     * return By.xpath(locator);
+     * } else {
+     * return By.cssSelector(locator);
+     * }
+     * }
+     */
 
-    //finders
-    private WebElement findElement(String locator) {
+    // finders
+    private WebElement findElement(By locator) {
         try {
             // Selenium intenta buscar el elemento
             return getWait()
                     .until(ExpectedConditions
-                            .presenceOfElementLocated
-                                    (getBy(locator)));
+                            .presenceOfElementLocated(locator));
         } catch (org.openqa.selenium.TimeoutException | org.openqa.selenium.NoSuchElementException e) {
-            // Capturamos el error técnico de Selenium y lo "envolvemos" en tu FrameworkException
+            // Capturamos el error técnico de Selenium y lo "envolvemos" en tu
+            // FrameworkException
             throw new FrameworkException("No se pudo encontrar el elemento con el localizador: "
                     + locator + " tras el tiempo de espera configurado.", e);
         }
     }
 
-
-    protected List<WebElement> findElements(String locator) {
+    protected List<WebElement> findElements(By locator) {
         try {
             return getWait().until(ExpectedConditions
-                    .presenceOfAllElementsLocatedBy
-                            (getBy(locator)));
+                    .presenceOfAllElementsLocatedBy(locator));
 
         } catch (org.openqa.selenium.TimeoutException
-                 | org.openqa.selenium.NoSuchElementException e) {
+                | org.openqa.selenium.NoSuchElementException e) {
             throw new FrameworkException("No se pudieron encontrar la lista de elementos con el locator: "
-                    + locator + " pasado el tiempo de espera configurado", e);
+                    + locator.toString() + " pasado el tiempo de espera configurado", e);
 
         }
     }
@@ -125,12 +126,12 @@ public abstract class BasePage {
     // --------------------------
     // ACTIONS
     // --------------------------
-// En BasePage.java
-    public void clickElement(String locator) {
+    // En BasePage.java
+    public void clickElement(By locator) {
         findElement(locator).click();
     }
 
-    public void write(String locator, String keysToSend) {
+    public void write(By locator, String keysToSend) {
         WebElement element = findElement(locator);
         element.clear();
         element.sendKeys(normalizeText(keysToSend));
@@ -138,24 +139,23 @@ public abstract class BasePage {
 
     // DROPDOWN methods
 
-    public Select selectDropdown(String locator) {
+    public Select selectDropdown(By locator) {
         return new Select(findElement(locator));
     }
 
-
-    public void selectFromDropdownByValue(String locator, String value) {
+    public void selectFromDropdownByValue(By locator, String value) {
         new Select(findElement(locator)).selectByValue(value);
     }
 
-    public void selectFromDropdownByIndex(String locator, int index) {
+    public void selectFromDropdownByIndex(By locator, int index) {
         new Select(findElement(locator)).selectByIndex(index);
     }
 
-    public int dropdownSize(String locator) {
+    public int dropdownSize(By locator) {
         return new Select(findElement(locator)).getOptions().size();
     }
 
-    public void selectFromDropDown(String locator, String text) {
+    public void selectFromDropDown(By locator, String text) {
         new Select(findElement(locator)).selectByVisibleText(text);
     }
 
@@ -167,9 +167,8 @@ public abstract class BasePage {
                 .toList();
     }
 
-
-    //isDisplayed:
-    public boolean elementIsDisplayed(String locator) {
+    // isDisplayed:
+    public boolean elementIsDisplayed(By locator) {
         if (findElement(locator).isDisplayed()) {
             System.out.println("El elemento es visible");
         } else {
@@ -179,12 +178,12 @@ public abstract class BasePage {
         return findElement(locator).isDisplayed();
     }
 
-    public WebElement getWebElement(String locator) {
+    public WebElement getWebElement(By locator) {
         return findElement(locator);
 
     }
 
-    public String getTextOfWebElement(String locator) {
+    public String getTextOfWebElement(By locator) {
         return findElement(locator).getText();
     }
 
@@ -198,10 +197,10 @@ public abstract class BasePage {
         }
     }
 
-    //normalizador de textos para datos de cucumber
+    // normalizador de textos para datos de cucumber
     private String normalizeText(String value) {
         if (value == null) {
-            return null;   // o "" según tu criterio
+            return null; // o "" según tu criterio
         }
         String actualText = value.trim().replace("\"", "");
         return switch (actualText) {
