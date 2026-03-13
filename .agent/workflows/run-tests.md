@@ -1,6 +1,6 @@
 ---
-description: Run project tests automatically
+description: Ejecuta los tests del proyecto automáticamente
 ---
 // turbo-all
-1. Clean the build directory and run tests using the Gradle wrapper.
-   - Command: .\gradlew.bat clean test
+1. Limpia el directorio de construcción y ejecuta los tests usando el wrapper de Gradle.
+   - Command: "./gradlew" clean test

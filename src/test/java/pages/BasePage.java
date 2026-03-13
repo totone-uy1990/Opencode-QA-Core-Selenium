@@ -79,9 +79,10 @@ public abstract class BasePage {
     }
 
     // --------------------------
-    // locator typeSelector:
+    // locator typeSelector: detecta si es css o xpath 
+//deprecated: cuando usabamos strings en vez de By
+
     // --------------------------
-    // detecta si es css o xpath
 
     /*
      * private static By getBy(String locator) {

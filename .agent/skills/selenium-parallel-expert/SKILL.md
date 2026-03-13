@@ -4,24 +4,24 @@ description: Experto en ejecuciones paralelas y concurrencia con Selenium, JUnit
 triggers: ["configurar paralelo", "error de concurrencia", "ajustar threadlocal", "debuggear sesión", "fallo aleatorio"]
 ---
 
-# Selenium Parallel Expert
+# Experto en Paralelismo con Selenium
 
 Experto en ejecuciones paralelas y concurrencia con Selenium, JUnit 5 y Java 24. Úsalo para ThreadLocal, condiciones de carrera y ciclos de vida thread-safe.
 
-## Strategies
+## Estrategias
 
-- **Thread Isolation**: Use `ThreadLocal<WebDriver>` to ensure each test execution thread has its own isolated session.
-- **Concurrent Resource Safety**: Prohibit the use of shared static variables for non-thread-safe objects or state.
-- **Atomic Operations**: Use atomic primitives (e.g., `AtomicInteger`) when counters or shared metrics are required.
+- **Aislamiento de Hilos**: Usar `ThreadLocal<WebDriver>` para asegurar que cada hilo de ejecución de pruebas tenga su propia sesión aislada.
+- **Seguridad de Recursos Concurrentes**: Prohibir el uso de variables estáticas compartidas para objetos o estados que no sean seguros para hilos.
+- **Operaciones Atómicas**: Usar primitivas atómicas (ej. `AtomicInteger`) cuando se requieran contadores o métricas compartidas.
 
-## Implementation Guidelines
+## Directrices de Implementación
 
-- **Lifecycle Consistency**: Ensure that WebDriver `.quit()` and `ThreadLocal.remove()` occur in the same thread context as initialization.
-- **Safe Singletons**: Implement singletons using `enum` or thread-safe lazy initialization to maintain consistency across threads.
-- **Memory Management**: Always call `.remove()` on `ThreadLocal` variables in `@After` hooks to prevent memory leaks in the JUnit pool.
+- **Consistencia del Ciclo de Vida**: Asegurar que el `.quit()` de WebDriver y el `.remove()` de `ThreadLocal` ocurran en el mismo contexto de hilo que la inicialización.
+- **Singletons Seguros**: Implementar singletons usando `enum` o inicialización perezosa segura para hilos para mantener la consistencia entre hilos.
+- **Gestión de Memoria**: Siempre llamar a `.remove()` en las variables `ThreadLocal` en los hooks `@After` para prevenir fugas de memoria en el pool de JUnit.
 
-## Best Practices
+## Mejores Prácticas
 
-- **Avoid Global State**: State must be encapsulated within the current thread; avoid passing the driver instance as a static global.
-- **Concurrent Collections**: Use `ConcurrentHashMap` or `CopyOnWriteArrayList` for any minimal shared configuration needs.
-- **Virtual Threads Awareness**: If leveraging Java virtual threads, ensure that long-running operations do not block the underlying carrier threads redundantly.
+- **Evitar el Estado Global**: El estado debe estar encapsulado dentro del hilo actual; evitar pasar la instancia del driver como una variable estática global.
+- **Colecciones Concurrentes**: Usar `ConcurrentHashMap` o `CopyOnWriteArrayList` para cualquier necesidad mínima de configuración compartida.
+- **Conciencia de Virtual Threads**: Si se utilizan hilos virtuales de Java, asegurar que las operaciones de larga duración no bloqueen innecesariamente los hilos portadores subyacentes.

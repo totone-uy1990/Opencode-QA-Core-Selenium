@@ -4,26 +4,26 @@ description: Gestor de ejecución y reportes. Úsalo para correr tests con Gradl
 triggers: ["ejecutar tests", "correr smoke", "generar reporte", "limpiar proyecto", "ver resultados"]
 ---
 
-# Automation Ops Manager
+# Gestor de Operaciones de Automatización
 
 Gestor de ejecución y reportes. Úsalo para correr tests con Gradle, filtrar por tags de Cucumber y gestionar reportes de Allure.
 
-## Strategies
+## Estrategias
 
-- **Build Automation**: Use Gradle for all lifecycle tasks including cleaning, compiling, and testing.
-- **Selective Execution**: Utilize Cucumber tags to run specific test suites (e.g., @Smoke, @Regression).
-- **Automated Reporting**: Guarantee Allure results generation and provide methods for report serving and analysis.
+- **Automatización de Builds**: Usar Gradle para todas las tareas del ciclo de vida, incluyendo limpieza, compilación y pruebas.
+- **Ejecución Selectiva**: Utilizar etiquetas (tags) de Cucumber para ejecutar suites de pruebas específicas (ej. @Smoke, @Regression).
+- **Reportes Automatizados**: Garantizar la generación de resultados de Allure y proporcionar métodos para la visualización y análisis de reportes.
 
-## Implementation Guidelines
+## Directrices de Implementación
 
-- **Terminal Commands**: 
-  - Clean: `./gradlew clean`
-  - All Tests: `./gradlew test`
-  - Tagged Tests: `./gradlew test -Dcucumber.filter.tags="@tag"`
-- **Parallel Optimization**: Configure `maxParallelForks` in `build.gradle` and suggest runtime adjustments to thread counts.
+- **Comandos de Terminal**: 
+  - Limpiar: `./gradlew clean`
+  - Todas las Pruebas: `./gradlew test`
+  - Pruebas Etiquetadas: `./gradlew test -Dcucumber.filter.tags="@tag"`
+- **Optimización Paralela**: Configurar `maxParallelForks` en `build.gradle` y sugerir ajustes en tiempo de ejecución para el recuento de hilos.
 
-## Best Practices
+## Mejores Prácticas
 
-- **Resource Management**: Monitor project health (dependencies, Java version) using Gradle status.
-- **Reporting Cycle**: Always verify the `allure-results` directory post-execution to confirm data integrity.
-- **Error Diagnosis**: In case of build failures, prioritize investigating the `build.gradle` configuration and toolchain consistency.
+- **Gestión de Recursos**: Monitorear la salud del proyecto (dependencias, versión de Java) usando el estado de Gradle.
+- **Ciclo de Reportes**: Siempre verificar el directorio `allure-results` después de la ejecución para confirmar la integridad de los datos.
+- **Diagnóstico de Errores**: En caso de fallos en el build, priorizar la investigación de la configuración de `build.gradle` y la consistencia del toolchain.

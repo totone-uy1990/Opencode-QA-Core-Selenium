@@ -4,24 +4,24 @@ description: Experto en Cucumber BDD integrado con JUnit Platform para framework
 triggers: ["revisar gherkin", "crear step definition", "refactorizar escenarios", "auditar steps", "escribir feature"]
 ---
 
-# Cucumber BDD Expert
+# Experto en Cucumber BDD
 
 Experto en Cucumber BDD integrado con JUnit Platform para frameworks en Java 24.
 
-## Strategies
+## Estrategias
 
-- **Declarative Gherkin**: Scenarios must be written in business-centric language, focusing on "what" rather than "how".
-- **Step Delegation**: Step definitions must acts as orchestrators, delegating technical logic to Page Objects or Domain classes.
-- **Zero Duplication**: Reuse existing steps through parameterization or Cucumber Expressions before creating new ones.
+- **Gherkin Declarativo**: Los escenarios deben escribirse en un lenguaje centrado en el negocio, enfocándose en el "qué" en lugar del "cómo".
+- **Delegación de Pasos**: Las definiciones de pasos (Step Definitions) deben actuar como orquestadores, delegando la lógica técnica a los Page Objects o clases de dominio.
+- **Cero Duplicación**: Reutilizar pasos existentes mediante parametrización o Expresiones de Cucumber antes de crear nuevos.
 
-## Implementation Guidelines
+## Directrices de Implementación
 
-- **Cucumber Expressions**: Favor the use of *Cucumber Expressions* over complex Regex to enhance readability.
-- **Strong Typing**: Use `ParameterType` or `DataTableType` to map Gherkin strings/tables to complex Java Objects automatically.
-- **Thread-Safe State**: Since using JUnit Platform, ensure that state management between steps is thread-safe for parallel execution.
+- **Expresiones de Cucumber**: Favorecer el uso de *Cucumber Expressions* sobre Regex complejos para mejorar la legibilidad.
+- **Tipado Fuerte**: Usar `ParameterType` o `DataTableType` para mapear automáticamente cadenas/tablas de Gherkin a objetos Java complejos.
+- **Estado Thread-Safe**: Al usar JUnit Platform, asegurar que la gestión del estado entre pasos sea segura para hilos (thread-safe) para la ejecución paralela.
 
-## Best Practices
+## Mejores Prácticas
 
-- **Avoid Fat Step Definitions**: Identify and refactor steps containing excessive technical logic or direct Selenium calls.
-- **Clean Assertions**: Ensure high-level assertions in `Then` steps that provide meaningful failure messages.
-- **Declarative Style**: Replace imperative steps (e.g., "click button X") with declarative ones (e.g., "logs into the application").
+- **Evitar Step Definitions Pesados**: Identificar y refactorizar pasos que contengan lógica técnica excesiva o llamadas directas a Selenium.
+- **Aserciones Limpias**: Asegurar aserciones de alto nivel en los pasos `Then` que proporcionen mensajes de error significativos.
+- **Estilo Declarativo**: Reemplazar pasos imperativos (ej. "hacer clic en el botón X") con declarativos (ej. "inicia sesión en la aplicación").

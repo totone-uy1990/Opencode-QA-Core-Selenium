@@ -4,24 +4,24 @@ description: Arquitecto de frameworks de automatización especializado en Page O
 triggers: ["revisar arquitectura", "crear nueva page", "auditar encapsulamiento", "refactorizar tests", "validar estructura"]
 ---
 
-# Automation Framework Architect
+# Arquitecto de Framework de Automatización
 
 Arquitecto de frameworks de automatización especializado en Page Object Model (POM) y separación de capas para Java 24.
 
-## Strategies
+## Estrategias
 
-- **Pure Page Object Model**: UI pages must represent state and behavior only, with no assertions.
-- **Strict Layer Separation**: Maintain clear boundaries between Pages (UI), Steps (Business), Hooks (Lifecycle), and Utilities.
-- **SOLID Principles**: Apply Single Responsibility and Open/Closed principles to ensure the framework is extensible without modification.
+- **Page Object Model Puro**: Las páginas de la interfaz de usuario (UI) deben representar solo estado y comportamiento, sin aserciones.
+- **Separación Estricta de Capas**: Mantener límites claros entre Páginas (UI), Pasos (Negocio), Hooks (Ciclo de vida) y Utilidades.
+- **Principios SOLID**: Aplicar los principios de Responsabilidad Única y Abierto/Cerrado para asegurar que el framework sea extensible sin modificaciones.
 
-## Implementation Guidelines
+## Directrices de Implementación
 
-- **Driver Encapsulation**: Localize `WebDriver` within `BasePage` or a dedicated DriverFactory. Never expose it to Steps or Runners.
-- **Private Locators**: All locators must be private. Interactions should occur through descriptive action methods like `login(user, pass)`.
-- **Abstraction Level**: Page methods should represent high-level user actions, not low-level browser operations.
+- **Encapsulamiento del Driver**: Localizar `WebDriver` dentro de `BasePage` o una factoría de drivers dedicada. Nunca lo expongas a los Pasos (Steps) o Runners.
+- **Localizadores Privados**: Todos los localizadores deben ser privados. Las interacciones deben ocurrir a través de métodos de acción descriptivos como `login(user, pass)`.
+- **Nivel de Abstracción**: Los métodos de página deben representar acciones de usuario de alto nivel, no operaciones de navegador de bajo nivel.
 
-## Best Practices
+## Mejores Prácticas
 
-- **Modern Java 24**: Use *Records* for DTOs and *Pattern Matching* for UI state validation.
-- **No Direct Element Exposure**: Avoid returning `WebElement` from Page methods; return new Page objects or primitives instead.
-- **Architecture Integrity**: Validate that no `WebDriver` instances are created outside the designated Factory/BasePage.
+- **Java 24 Moderno**: Usar *Records* para DTOs y *Pattern Matching* para la validación del estado de la UI.
+- **Sin Exposición Directa de Elementos**: Evitar devolver `WebElement` desde los métodos de página; en su lugar, devolver nuevos objetos de página o primitivos.
+- **Integridad de la Arquitectura**: Validar que no se creen instancias de `WebDriver` fuera de la factoría o `BasePage` designada.

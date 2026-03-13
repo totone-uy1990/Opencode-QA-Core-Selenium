@@ -8,20 +8,20 @@ triggers: ["crear test", "refactorizar framework", "configurar paralelo", "debug
 
 Experto en arquitectura de automatización con Java 24, Selenium y Cucumber. Úsalo para diseñar, refactorizar o auditar frameworks, asegurando paralelismo y el uso de Gradle.
 
-## Strategies
+## Estrategias
 
-- **Strict Layer Separation**: Maintain total independence between UI (Pages), Business Logic (Steps), and Configuration (Runners/Hooks).
-- **Parallel Execution First**: Design all components to be thread-safe, utilizing `ThreadLocal` for WebDriver instances.
-- **Fail Fast & Clear**: Implement explicit waits and descriptive custom assertions to identify issues immediately.
+- **Separación Estricta de Capas**: Mantener independencia total entre la UI (Páginas), la Lógica de Negocio (Pasos) y la Configuración (Runners/Hooks).
+- **Ejecución Paralela Primero**: Diseñar todos los componentes para que sean seguros para hilos (thread-safe), utilizando `ThreadLocal` para las instancias de WebDriver.
+- **Fallo Rápido y Claro**: Implementar esperas explícitas y aserciones personalizadas descriptivas para identificar problemas inmediatamente.
 
-## Implementation Guidelines
+## Directrices de Implementación
 
-- **Modern Stack**: Leverage Java 24 features like *Records* for test data and *Pattern Matching* for clean conditional logic.
-- **Lifecycle Management**: Utilize JUnit 5 extensions and Cucumber Hooks for robust environment setup and teardown.
-- **Gradle Operations**: Use comprehensive Gradle commands for builds and specific test filtering (e.g., `./gradlew test --info`).
+- **Stack Moderno**: Aprovechar las características de Java 24 como *Records* para datos de prueba y *Pattern Matching* para una lógica condicional limpia.
+- **Gestión del Ciclo de Vida**: Utilizar extensiones de JUnit 5 y Hooks de Cucumber para una configuración y desmontaje robustos del entorno.
+- **Operaciones de Gradle**: Usar comandos de Gradle completos para builds y filtrado de pruebas específicas (ej. `./gradlew test --info`).
 
-## Best Practices
+## Mejores Prácticas
 
-- **Avoid Static Leakage**: Do not use global static variables for state; keep everything encapsulated within the current thread's context.
-- **No Implicit Waits**: Prohibit `Thread.sleep()` and mixed waits; use only `WebDriverWait` for synchronization.
-- **Code Audit**: Regularly review Page Objects to ensure no `WebElement` leakage and that locators remain robust and stable.
+- **Evitar Fugas Estáticas**: No usar variables estáticas globales para el estado; mantener todo encapsulado dentro del contexto del hilo actual.
+- **Sin Esperas Implícitas**: Prohibir `Thread.sleep()` y esperas mixtas; usar solo `WebDriverWait` para la sincronización.
+- **Auditoría de Código**: Revisar regularmente los Page Objects para asegurar que no haya fugas de `WebElement` y que los localizadores sigan siendo robustos y estables.
