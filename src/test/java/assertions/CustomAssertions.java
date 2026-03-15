@@ -99,4 +99,11 @@ public class CustomAssertions {
     public void failBusinessRule(String message) {
         Assertions.fail(message);
     }
+
+    // --------------------------
+    // BOOLEANO ESTÁTICO
+    // --------------------------
+    public static void assertTrue(boolean condition, String message) {
+        Assertions.assertTrue(condition, message);
+    }
 }

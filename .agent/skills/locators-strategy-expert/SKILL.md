@@ -17,7 +17,7 @@ Especialista en el diseño de selectores precisos, mantenibles y performantes, p
     4. `CSS Selectors` (Jerarquía visual y clases estables).
     5. `Relative XPath` (Relaciones entre elementos hermanos o padres cuando no hay identificadores).
 
-- **Estrategia Descriptiva**: Los nombres de los locadores en Java deben reflejar exactamente qué son (ej: `txtLoginUsername`, `btnSubmitOrder`).
+- **Estrategia Descriptiva y Gestión JSON**: Los locadores ya no deben mapearse como atributos Java. DEBEN definirse en archivos `.json` dentro de `src/test/resources/locators/` y llamarse dinámicamente usando `LocatorManager.get()`. Las llaves JSON deben mantener sufijos que indiquen su tipo referencial (ej: `loginUsernameInput`, `submitOrderButton`).
 
 ## Directrices de Implementación
 

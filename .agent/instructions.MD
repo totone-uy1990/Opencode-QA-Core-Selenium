@@ -6,7 +6,7 @@
 - **Idioma**: Explicaciones y comentarios siempre en español.
 
 ## Directrices de Desarrollo y Calidad
-1. **Encapsulamiento de Locadores**: Todos los objetos `By` deben ser `private final`. No expongas elementos internos; expón acciones (métodos).
+1. **Gestión Dinámica de Locadores (Estándar JSON)**: La definición de locadores DEBE extraerse a archivos JSON ubicados en `src/test/resources/locators/`. Los Page Objects no deben declarar objetos `By` como atributos de clase (`private final By`), sino usar la utilidad `LocatorManager.get("archivo.json", "llave")`. Esto desacopla el DOM de la lógica Java.
 2. **Estrategia de Esperas**: Prohibido el uso de `Thread.sleep()`. Utiliza siempre `WebDriverWait` con condiciones de `ExpectedConditions`.
 3. **Fluent API**: Siempre que sea posible, los métodos de los Page Objects deben devolver `this` (si la navegación se queda en la misma página) o una nueva instancia del siguiente Page Object.
 4. **Lombok**: Utiliza `@Getter` para los locadores si es estrictamente necesario, y prefiere constructores generados con `@RequiredArgsConstructor`.
