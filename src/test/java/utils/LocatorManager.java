@@ -10,8 +10,8 @@ import java.util.Map;
 
 public class LocatorManager {
 
-    private static final Map<String, JsonNode> cache = new HashMap<>();
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final Map<String, JsonNode> cache = new HashMap<>(); //cachea los archivos JSON
+    private static final ObjectMapper mapper = new ObjectMapper(); //convierte el JSON a objetos Java
 
     /**
      * Obtiene un objeto By leyendo un archivo JSON de recursos.
@@ -41,6 +41,7 @@ public class LocatorManager {
         };
     }
 
+    //busca el archivo JSON en la carpeta locators y lo carga en cache
     private static JsonNode getRootNode(String fileName) {
         if (!cache.containsKey(fileName)) {
             try (InputStream in = LocatorManager.class.getResourceAsStream("/locators/" + fileName)) {

@@ -1,20 +1,14 @@
 package pages;
 
-import customExceptions.AutomationException;
 import customExceptions.FrameworkException;
-import io.qameta.allure.internal.shadowed.jackson.databind.ser.Serializers;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
-
 public abstract class BasePage {
     // metodo obligatorio para todos los page object //para validaciones
     protected abstract WebElement getElement(By locator);
