@@ -1,6 +1,7 @@
 package pages;
 
 import customExceptions.FrameworkException;
+import coreLocators.LocatorRepository;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,7 +10,20 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
+
 public abstract class BasePage {
+
+    // --- NUEVO: Propiedad para el nombre del archivo JSON ---
+    protected String locatorFile;
+
+    // Constructor para pages que usan JSON
+    public BasePage(String locatorFile) {
+        this.locatorFile = locatorFile;
+    }
+
+    // Constructor vacío para pages viejas que aún usan variables By
+    public BasePage() {}
+
     // metodo obligatorio para todos los page object //para validaciones
     protected abstract WebElement getElement(By locator);
 
@@ -72,25 +86,19 @@ public abstract class BasePage {
         getDriverFromThread().get(url);
     }
 
-    // --------------------------
-    // locator typeSelector: detecta si es css o xpath 
-//deprecated: cuando usabamos strings en vez de By
+    // ----------------------------------------------------
+    // METODO AUXILIAR: Transforma String Key en un By
+    // ----------------------------------------------------
+    protected By getBy(String locatorKey) {
+        if (locatorFile == null) {
+            throw new FrameworkException("No se definió el archivo JSON (locatorFile) para esta Page.", null);
+        }
+        return LocatorRepository.getLocator(locatorFile, locatorKey);
+    }
 
     // --------------------------
-
-    /*
-     * private static By getBy(String locator) {
-     * locator = locator.trim();
-     * 
-     * if (locator.startsWith("/") || locator.startsWith("(")) {
-     * return By.xpath(locator);
-     * } else {
-     * return By.cssSelector(locator);
-     * }
-     * }
-     */
-
-    // finders
+    // FINDERS ORIGINALES (Reciben By)
+    // --------------------------
     private WebElement findElement(By locator) {
         try {
             // Selenium intenta buscar el elemento
@@ -119,9 +127,8 @@ public abstract class BasePage {
     }
 
     // --------------------------
-    // ACTIONS
+    // ACTIONS ORIGINALES (Reciben By)
     // --------------------------
-    // En BasePage.java
     public void clickElement(By locator) {
         findElement(locator).click();
     }
@@ -180,6 +187,54 @@ public abstract class BasePage {
 
     public String getTextOfWebElement(By locator) {
         return findElement(locator).getText();
+    }
+
+    // ==========================================================
+    // NUEVAS ACTIONS SOBRECARGADAS (Reciben String desde el JSON)
+    // ==========================================================
+
+    public void clickElement(String locatorKey) {
+        clickElement(getBy(locatorKey));
+    }
+
+    public void write(String locatorKey, String keysToSend) {
+        write(getBy(locatorKey), keysToSend);
+    }
+
+    public Select selectDropdown(String locatorKey) {
+        return selectDropdown(getBy(locatorKey));
+    }
+
+    public void selectFromDropdownByValue(String locatorKey, String value) {
+        selectFromDropdownByValue(getBy(locatorKey), value);
+    }
+
+    public void selectFromDropdownByIndex(String locatorKey, int index) {
+        selectFromDropdownByIndex(getBy(locatorKey), index);
+    }
+
+    public int dropdownSize(String locatorKey) {
+        return dropdownSize(getBy(locatorKey));
+    }
+
+    public void selectFromDropDown(String locatorKey, String text) {
+        selectFromDropDown(getBy(locatorKey), text);
+    }
+
+    public boolean elementIsDisplayed(String locatorKey) {
+        return elementIsDisplayed(getBy(locatorKey));
+    }
+
+    public WebElement getWebElement(String locatorKey) {
+        return getWebElement(getBy(locatorKey));
+    }
+
+    public String getTextOfWebElement(String locatorKey) {
+        return getTextOfWebElement(getBy(locatorKey));
+    }
+
+    protected List<WebElement> findElements(String locatorKey) {
+        return findElements(getBy(locatorKey));
     }
 
     // --------------------------
