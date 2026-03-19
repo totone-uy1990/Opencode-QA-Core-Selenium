@@ -91,4 +91,4 @@ For this repository, we follow a split documentation strategy:
 This project is built under a "Pair Programming" philosophy between humans and AI. Feel free to use the provided agent skills to extend the framework!
 
 ---
-*Created and maintained with ❤️ by [Your Name/User] & Antigravity AI.*
+*Created and maintained with ❤️ by [Ronal] & Antigravity AI.*
