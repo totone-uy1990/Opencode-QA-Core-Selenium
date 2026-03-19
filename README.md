@@ -1,4 +1,4 @@
-# 🚀 Nexus-QA-Framework: AI-Enhanced Automation Engine
+# 🚀 Selenium Antigravity Automation-QA-Framework: AI-Enhanced Automation Engine
 
 Nexus-QA-Framework is a next-generation, enterprise-grade test automation architecture built with **Java 21**, **Selenium**, and **Cucumber**. It is designed for maximum scalability, execution speed (Parallel Testing), and seamless collaboration with AI agents.
 
