@@ -1,4 +1,4 @@
-# 🚀 Nexus-QA-Framework: AI-Enhanced Automation Engine
+# 🚀 Selenium OpencCode Automation-QA-Framework: AI-Enhanced Automation Engine
 
 Nexus-QA-Framework is a next-generation, enterprise-grade test automation architecture built with **Java 21**, **Selenium**, and **Cucumber**. It is designed for maximum scalability, execution speed (Parallel Testing), and seamless collaboration with AI agents.
 
@@ -91,4 +91,4 @@ For this repository, we follow a split documentation strategy:
 This project is built under a "Pair Programming" philosophy between humans and AI. Feel free to use the provided agent skills to extend the framework!
 
 ---
-*Created and maintained with ❤️ by [Your Name/User] & Antigravity AI.*
+*Created and maintained with ❤️ by [Ronal] & Antigravity AI.*
