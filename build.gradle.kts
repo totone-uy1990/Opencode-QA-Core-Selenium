@@ -1,3 +1,4 @@
+// probando algo
 plugins {
     id("java")
     id("io.qameta.allure") version "3.0.2" // Plugin maneja el agente automáticamente

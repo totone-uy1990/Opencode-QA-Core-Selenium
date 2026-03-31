@@ -6,7 +6,9 @@ import pages.BasePage;
 
 public class CartPage extends BasePage {
 
-    private final By btnProceedToAddress = By.xpath("//button[contains(text(),'Proceed to Address')]");
+    public CartPage() {
+        super("cart");
+    }
 
     @Override
     protected WebElement getElement(By locator) {
@@ -14,7 +16,7 @@ public class CartPage extends BasePage {
     }
 
     public CheckoutPage proceedToAddress() {
-        clickElement(btnProceedToAddress);
+        clickElement("btnProceedToAddress");
         return new CheckoutPage();
     }
 }

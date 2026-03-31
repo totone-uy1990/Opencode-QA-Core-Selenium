@@ -6,7 +6,9 @@ import pages.BasePage;
 
 public class SuccessPage extends BasePage {
 
-    private final By msgStatus = By.xpath("//h2 | //h4"); // Captura el encabezado de éxito o fallo
+    public SuccessPage() {
+        super("success");
+    }
 
     @Override
     protected WebElement getElement(By locator) {
@@ -14,7 +16,7 @@ public class SuccessPage extends BasePage {
     }
 
     public String getMessageText() {
-        return getTextOfWebElement(msgStatus);
+        return getTextOfWebElement("msgStatus");
     }
     
     public boolean isOrderSuccess() {
