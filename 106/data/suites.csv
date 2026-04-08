@@ -1,0 +1,31 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"  As a registered user
+  I want to authenticate into the application
+  So that I can access my secure account dashboard","2324","Failed login with invalid credentials","","Wed Apr 08 21:42:26 UTC 2026","failed","Wed Apr 08 21:42:28 UTC 2026","","Login Flow Challenge","Failed login with invalid credentials",""
+"  As a registered user
+  I want to authenticate into the application
+  So that I can access my secure account dashboard","1936","Successful login with valid credentials","","Wed Apr 08 21:42:27 UTC 2026","passed","Wed Apr 08 21:42:29 UTC 2026","","Login Flow Challenge","Successful login with valid credentials",""
+"  As a registered user
+  I want to authenticate into the application
+  So that I can access my secure account dashboard","1406","Failed login with invalid credentials","","Wed Apr 08 21:42:25 UTC 2026","failed","Wed Apr 08 21:42:26 UTC 2026","","Login Flow Challenge","Failed login with invalid credentials",""
+"  Como un cliente del sitio
+  Quiero completar un proceso de compra completo
+  Para adquirir productos exitosamente","25731","Validación de campos obligatorios en facturación","","Wed Apr 08 21:42:08 UTC 2026","broken","Wed Apr 08 21:42:34 UTC 2026","","Flujo de Compra de Producto en E-commerce","Validación de campos obligatorios en facturación",""
+"  The system must allow student registration by validating data integrity.","16524","Registro exitoso de un estudiante con información completa","","Wed Apr 08 21:42:08 UTC 2026","broken","Wed Apr 08 21:42:24 UTC 2026","","Student Enrollment Management","Registro exitoso de un estudiante con información completa",""
+"  As a registered user
+  I want to authenticate into the application
+  So that I can access my secure account dashboard","1566","Failed login with invalid credentials","","Wed Apr 08 21:42:28 UTC 2026","passed","Wed Apr 08 21:42:30 UTC 2026","","Login Flow Challenge","Failed login with invalid credentials",""
+"  As a registered user
+  I want to authenticate into the application
+  So that I can access my secure account dashboard","16710","Failed login with invalid credentials","","Wed Apr 08 21:42:08 UTC 2026","failed","Wed Apr 08 21:42:25 UTC 2026","","Login Flow Challenge","Failed login with invalid credentials",""
+"  Como un cliente del sitio
+  Quiero completar un proceso de compra completo
+  Para adquirir productos exitosamente","11966","Compra exitosa de un producto único","","Wed Apr 08 21:42:27 UTC 2026","broken","Wed Apr 08 21:42:39 UTC 2026","","Flujo de Compra de Producto en E-commerce","Compra exitosa de un producto único",""
+"  Como un cliente del sitio
+  Quiero completar un proceso de compra completo
+  Para adquirir productos exitosamente","11242","Intento de compra con pago cancelado","","Wed Apr 08 21:42:30 UTC 2026","broken","Wed Apr 08 21:42:41 UTC 2026","","Flujo de Compra de Producto en E-commerce","Intento de compra con pago cancelado",""
+"  As a registered user
+  I want to authenticate into the application
+  So that I can access my secure account dashboard","1330","Failed login with invalid credentials","","Wed Apr 08 21:42:29 UTC 2026","passed","Wed Apr 08 21:42:30 UTC 2026","","Login Flow Challenge","Failed login with invalid credentials",""
+"  The system must allow student registration by validating data integrity.","16550","Fallo en el registro por número de teléfono inválido","","Wed Apr 08 21:42:08 UTC 2026","broken","Wed Apr 08 21:42:24 UTC 2026","","Student Enrollment Management","Fallo en el registro por número de teléfono inválido",""
+"  The system must allow student registration by validating data integrity.","2431","Fallo en el registro al intentar enviar el formulario vacío","","Wed Apr 08 21:42:25 UTC 2026","passed","Wed Apr 08 21:42:27 UTC 2026","","Student Enrollment Management","Fallo en el registro al intentar enviar el formulario vacío",""
