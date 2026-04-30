@@ -206,10 +206,5 @@ CI=true ./gradlew clean test
 
 ---
 
-## Contribución
-
-Proyecto construido bajo filosofia Pair Programming entre humanos y AI.
-
----
 
 Creado y mantenido conRonal y Antigravity AI.
